@@ -1,20 +1,25 @@
 document.getElementById('add-money-button')
 .addEventListener('click', function(event){
       event.preventDefault();
-      console.log('button click');
       const addMoney = getInputFaildValueById('input-add-money');
-      console.log(addMoney);
       const pinNumber = getInputFaildValueById('input-pin-number');
-      console.log(pinNumber);
+      if(isNaN(addMoney)){
+            alert('Invalid Number! Please vaild number Provide')
+            return;
+      }
       if(pinNumber === 1234){
-          console.log('adding money');
-
         const balance = getTextFaildValueById('account-balance');
-        console.log(balance);
         const newBalance = addMoney + balance;
-        console.log(newBalance);
         document.getElementById('account-balance').innerText = newBalance;
+        const p = document.createElement('p');
+
+        p.style.padding = '2'
+        p.innerText = `
+        Added: ${addMoney} Tk. New Balance: ${newBalance}
         
+        
+        `
+        document.getElementById('transcaton-container').appendChild(p)
           
             
       }
